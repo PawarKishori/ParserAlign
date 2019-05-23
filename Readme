@@ -55,5 +55,6 @@ Installation of English parser:
 
 3.  
 run this file:
-run_new_stanford-parser.sh 
+
+sh run_new_stanford-parser.sh </home/..path/to/input_file>  </home/..output_file_directory>
 
