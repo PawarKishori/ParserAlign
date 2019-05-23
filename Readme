@@ -1,0 +1,59 @@
+####################################### Installation of Hindi Parser #############################################################
+
+1. create python2.7 conda environment
+	conda create -n python2.7 python=2.7
+2. activate python2.7 environment
+	source activate python2.7
+3. clone the parser directory 
+	git clone https://github.com/PawarKishori/csnlp.git
+4. Setup the path in bash for csnlp
+	export hindi_parser=path/to/csnlp
+	source ~/.bashrc
+5. go inside the directory.
+	cd csnlp
+6. Install the parser requirements, either using conda or pip, but in the same python directory in which environment is activated.
+	6.1.1 Install gensim package 
+		conda install -c anaconda gensim 
+	6.2.1 Install pip (as dynet will be installed using pip)
+		sudo apt-get install python-pip  
+	6.2.2 Install dynet using pip, as it was not available in conda
+		/home/...path to python/anaconda2/bin/python2.7 -m pip install dynet
+	6.2.3 Download the models for parser	
+		git clone https://bitbucket.org/irshadbhat/nsdp-cs-models/src/c775772ec71639907771603c3071afe79e1382d9/PANINI/HI/PARSER
+	6.2.4 Unzip using bunzip command:
+		1) cd $hindi_parser/PARSER/PANINI/HI/PARSER
+		2) bunzip2 *.bz2
+		3) cd $hindi_parser/PARSER/UD/HI/PARSER
+		4) bunzip2 *.bz2
+
+7. Integrating tokenizer 
+	7.1 clone tokenizer
+		git clone https://irshadbhat@bitbucket.org/iscnlp/tokenizer.git
+	7.2 cd tokenizer
+	7.3 sudo python setup.py install (sudo apt-get install python-setuptools)
+
+
+8. Testing : Hindi parser run command
+
+	Run parser without tokenizer:
+        python mono_jm_parser.py --load <path-of-csnlp-parser>/PARSER/PANINI/HI/PARSER/hi-bist-parser --test <inputfile-name> --output-file <outfile-name>
+        Ex: python mono_jm_parser.py --load ~/hindi-parsers/csnlp/PARSER/PANINI/HI/PARSER/hi-bist-parser --test  test --output-file test_out
+
+
+	Run parser with tokenizer:
+	sh run_hindi_parser.sh /absolute/path/to/input_wx/file output_file	
+	sh run_hindi_parser.sh /home/kishori/csnlp/demo demo.out
+
+
+######################################## Installation of English Parser ###################################################################
+
+Installation of English parser:
+1. Download stanford parser:
+        wget  https://nlp.stanford.edu/software/stanford-parser-full-2018-10-17.zip
+2. Extract the zip
+        unzip stanford-parser-full-2018-10-17.zip
+
+3.  
+run this file:
+run_new_stanford-parser.sh 
+
